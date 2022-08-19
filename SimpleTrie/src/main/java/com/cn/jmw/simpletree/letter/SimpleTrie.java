@@ -1,4 +1,4 @@
-package com.cn.jmw.simpletree.Trie;
+package com.cn.jmw.simpletree.letter;
 
 /**
  * @author jmw
@@ -7,11 +7,11 @@ package com.cn.jmw.simpletree.Trie;
  * @Version 1.0
  */
 
-public class Trie {
+public class SimpleTrie {
 
     private TrieNode rootNode;
 
-    public Trie() {
+    public SimpleTrie() {
         rootNode = new TrieNode();
     }
 

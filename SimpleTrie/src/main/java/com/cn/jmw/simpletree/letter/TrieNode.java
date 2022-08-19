@@ -1,4 +1,4 @@
-package com.cn.jmw.simpletree.Trie;
+package com.cn.jmw.simpletree.letter;
 
 /**
  * @author jmw

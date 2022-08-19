@@ -19,6 +19,7 @@
         <module>SimpleTrie</module>
         <module>Sentinel</module>
         <module>MSSynchronization</module>
+        <module>BinaryTree</module>
     </modules>
 
     <properties>

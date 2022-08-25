@@ -20,6 +20,7 @@
         <module>Sentinel</module>
         <module>MSSynchronization</module>
         <module>BinaryTree</module>
+        <module>Common</module>
     </modules>
 
     <properties>

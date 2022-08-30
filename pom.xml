@@ -23,7 +23,9 @@
         <module>Common</module>
         <module>PrefixQueryTree</module>
         <module>ConfigurationConsistency</module>
-        <module>ConfigurationConsistency/Configuration-core-starter</module>
+        <!-- 挂在到ConfigurationConsistency模块下了 所以不需要加 -->
+<!--        <module>ConfigurationConsistency/Configuration-core-starter</module>-->
+<!--        <module>ConfigurationConsistency/Configuration-clinkHouse-starter</module>-->
     </modules>
 
     <properties>
@@ -47,11 +49,10 @@
         <druid.version>1.1.10</druid.version>
         <flyway.version>5.2.4</flyway.version>
         <jackson.version>2.10.5</jackson.version>
-        <jackson.databind.version>2.10.5</jackson.databind.version>
         <snakeyaml.version>1.23</snakeyaml.version>
         <snappy.version>1.1.7.2</snappy.version>
         <beanutils.version>1.9.4</beanutils.version>
-        <hutool.version>5.1.0</hutool.version>
+        <hutool.version>5.3.10</hutool.version>
         <slf4j.version>1.7.25</slf4j.version>
         <junit.version>4.12</junit.version>
         <akka.version>2.5.22</akka.version>
@@ -64,7 +65,6 @@
         <commons-io.version>2.5</commons-io.version>
         <commons-lang3.version>3.6</commons-lang3.version>
         <commons-text.version>1.1</commons-text.version>
-        <sqlite-jdbc.version>3.20.0</sqlite-jdbc.version>
         <jna.version>3.0.9</jna.version>
     </properties>
 
@@ -196,12 +196,6 @@
             </dependency>
 
             <dependency>
-                <groupId>org.xerial</groupId>
-                <artifactId>sqlite-jdbc</artifactId>
-                <version>${sqlite-jdbc.version}</version>
-            </dependency>
-
-            <dependency>
                 <groupId>com.sun.jna</groupId>
                 <artifactId>jna</artifactId>
                 <version>${jna.version}</version>
@@ -227,8 +221,89 @@
                 <version>0.3.1-patch</version>
             </dependency>
 
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>2.10.5</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven-compiler-plugin.version}</version>
+                    <configuration>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
+                        <encoding>${project.build.sourceEncoding}</encoding>
+                    </configuration>
+                </plugin>
+                <!--配置生成源码包 -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>${maven-source-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>attach-sources</id>
+                            <goals>
+                                <goal>jar</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+            </plugins>
+        </pluginManagement>
+    </build>
+    <profiles>
+        <profile>
+            <!-- 打包的 -P参数 -->
+            <id>release</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <!-- Source -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
     <repositories>
         <repository>
             <id>maven-net-cn</id>

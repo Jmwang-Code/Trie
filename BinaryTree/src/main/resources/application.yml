@@ -1,0 +1,11 @@
+server:
+  port: 8081
+spring:
+  datasource:
+    dynamic:
+      datasource:
+        clickhouse:
+          driver-class-name: ru.yandex.clickhouse.ClickHouseDriver
+          url: jdbc:clickhouse://192.168.103.33:8123/ck
+          username: default
+          password:

@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
     <modules>
-        <module>Configuration-clinkHouse-starter</module>
+        <module>Configuration-clickHouse-starter</module>
         <module>Configuration-core-starter</module>
     </modules>
 

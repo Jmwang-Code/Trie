@@ -14,14 +14,16 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @Slf4j
-public class ClinkHouseConfig {
-
+public class ClickHouseConfig {
+//😂
     /**
      * Spring 工具类
      */
     @Bean
     public SpringUtils getSpringUtils(ApplicationContext applicationContext) {
-        log.info("=============初始化==CK===============");
+        log.info("┌───────────────────────────────┐");
+        log.info("│   initialization ClickHouse   │");
+        log.info("└───────────────────────────────┘");
         SpringUtils.setApplicationContext(applicationContext);
         return new SpringUtils();
     }

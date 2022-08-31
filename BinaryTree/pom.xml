@@ -34,6 +34,13 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <!-- 自动引入 ClickHouse配置 -->
+        <dependency>
+            <groupId>com.cn.jmw</groupId>
+            <artifactId>Configuration-clickHouse-starter</artifactId>
+            <version>1.0</version>
+        </dependency>
     </dependencies>
 
     <build>

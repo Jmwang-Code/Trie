@@ -23,7 +23,8 @@
         <module>Common</module>
         <module>PrefixQueryTree</module>
         <module>ConfigurationConsistency</module>
-        <!-- 挂在到ConfigurationConsistency模块下了 所以不需要加 -->
+        <module>Stack</module>
+<!-- 挂在到ConfigurationConsistency模块下了 所以不需要加 -->
 <!--        <module>ConfigurationConsistency/Configuration-core-starter</module>-->
 <!--        <module>ConfigurationConsistency/Configuration-clinkHouse-starter</module>-->
     </modules>

@@ -129,6 +129,10 @@
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus</artifactId>
+        </dependency>
         <!--        <dependency>-->
         <!--            <groupId>cn.com.wind</groupId>-->
         <!--            <artifactId>Wind.BDG.Utility</artifactId>-->

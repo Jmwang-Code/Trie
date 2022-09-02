@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: Wind.BDG.Trie
+  profiles:
+    active: dev,jserver
+  datasource:
+    url: 192.168.103.46:3306/itoa?useSSL=false&useUnicode=true&characterEncoding=utf-8
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 123456
+
+#
+#eureka:
+#  instance:
+#    health-check-url-path: /actuator/health
+#    prefer-ip-address: true
+#    status-page-url-path: /actuator/info
+#  client:
+#    register-with-eureka: true
+#management:
+#  endpoint:
+#    health:
+#      show-details: always
+#  endpoints:
+#    web:
+#      cors:
+#        allowed-methods: '*'
+#        allowed-origins: '*'
+#      exposure:
+#        include: '*'
+#feign:
+#  hystrix:
+#    enabled: true
+app:
+  name: LocalTest-Service
+#logging:
+#  config: classpath:logback.xml
+#  path: log
+#  pattern:
+#    file: '%d %5p - %m%n'
+server:
+  port: 6688
+#  address: 10.200.126.95
+  address: 127.0.0.1
+
+

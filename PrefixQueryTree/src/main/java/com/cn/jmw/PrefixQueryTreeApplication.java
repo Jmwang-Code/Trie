@@ -1,6 +1,6 @@
 package com.cn.jmw;
 
-import com.cn.jmw.common.utils.EnableOkHttp;
+import com.cn.jmw.common.annotation.EnableOkHttp;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableAsync;

@@ -1,9 +1,8 @@
 package com.cn.jmw.common.config;
 
-import com.cn.jmw.common.utils.EnableOkHttp;
 import com.cn.jmw.common.utils.OkHttpUtils;
 import com.sun.istack.internal.NotNull;
-import org.springframework.context.annotation.Configuration;
+
 import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Resource;

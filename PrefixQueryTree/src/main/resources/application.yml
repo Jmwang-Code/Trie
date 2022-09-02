@@ -40,7 +40,13 @@ app:
 #    file: '%d %5p - %m%n'
 server:
   port: 6688
-#  address: 10.200.126.95
   address: 127.0.0.1
+# 短调用OKHTTP
+okhttp:
+  connect-timeout-ms: 500
+  keep-alive-duration-sec: 5000
+  max-idle: 100
+  read-timeout-ms: 500
+  write-timeout-ms: 500
 
 

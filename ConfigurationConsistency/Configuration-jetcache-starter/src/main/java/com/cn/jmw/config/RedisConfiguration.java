@@ -1,4 +1,4 @@
-package com.cn.jmw.cache.config;//package com.sangu.cloud.cache.config;
+//package com.cn.jmw.cache.config;//package com.sangu.cloud.cache.config;
 //
 //import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 //import org.springframework.beans.factory.annotation.Value;

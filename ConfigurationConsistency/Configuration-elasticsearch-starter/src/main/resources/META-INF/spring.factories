@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.cn.jmw.es.config.ElasticsearchConfig,\
+  com.cn.jmw.es.utils.xx`EsUtil

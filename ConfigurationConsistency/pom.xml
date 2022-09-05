@@ -12,6 +12,10 @@
     <modules>
         <module>Configuration-clickHouse-starter</module>
         <module>Configuration-core-starter</module>
+        <module>Configuration-mysql-starter</module>
+        <module>Configuration-elasticsearch-starter</module>
+        <module>Configuration-jetcache-starter</module>
+        <module>Configuration-kafka-starter</module>
     </modules>
 
     <artifactId>ConfigurationConsistency</artifactId>

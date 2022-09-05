@@ -1,9 +1,9 @@
 package com.cn.jmw.tree;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+
+import lombok.ToString;
+
+import java.util.*;
 
 /**
  * @author 一只小小狗
@@ -30,6 +30,7 @@ public class BinaryTreeModel {
         root = val;
     }
 
+    @ToString
     static class TreeNode {
         int val;
         TreeNode left;
@@ -375,16 +376,41 @@ public class BinaryTreeModel {
     }
 
 
+    /**
+     * @Author jmw
+     * @Description 652 寻找重复子树 这个是DFS+HASHMAP
+     * @Date 13:20 2022/9/5
+     * @Param
+     * @return
+     **/
+    Map<String,Integer> map = new HashMap<>();
+    List<TreeNode> ans = new ArrayList<TreeNode>();
+    public List<TreeNode> findDuplicateSubtrees(TreeNode root) {
+        dfs(root);
+        return ans;
+    }
+
+    String dfs(TreeNode root){
+        if(root==null)return " ";
+        StringBuilder sb = new StringBuilder();
+        sb.append(root.val).append("_");
+        sb.append(dfs(root.left)).append(dfs(root.right));
+        String key = sb.toString();
+        map.put(key,map.getOrDefault(key,0)+1);
+        if (map.get(key)==2)ans.add(root);
+        return key;
+    }
+
+
     public static void main(String[] args) {
-        TreeNode treeNode = new TreeNode(7,null,null);
-        TreeNode treeNode1 = new TreeNode(20,null,null);
-        TreeNode treeNode2 = new TreeNode(15, treeNode, null);
-        TreeNode treeNode3 = new TreeNode(9, treeNode1, null);
-        TreeNode treeNode4 = new TreeNode(3, treeNode2, treeNode3);
+        TreeNode treeNode = new TreeNode(1,null,null);
+        TreeNode treeNode1 = new TreeNode(1,null,null);
+        TreeNode treeNode2 = new TreeNode(1, treeNode, null);
+        TreeNode treeNode3 = new TreeNode(1, treeNode1, null);
+        TreeNode treeNode4 = new TreeNode(1, treeNode2, treeNode3);
         BinaryTreeModel binaryTreeModel = new BinaryTreeModel(treeNode4);
-        binaryTreeModel.averageOfLevels().stream().forEach(System.out::println);
+        binaryTreeModel.findDuplicateSubtrees(treeNode4).stream().forEach(System.out::println);
 
-        System.out.println(1);
-
+        System.out.println(binaryTreeModel.ans);
     }
 }

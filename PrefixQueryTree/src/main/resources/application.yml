@@ -4,7 +4,7 @@ spring:
   profiles:
     active: dev,jserver
   datasource:
-    url: XXX
+    url: localhost:3306/itoa?useSSL=false&useUnicode=true&characterEncoding=utf-8
     driver-class-name: com.mysql.jdbc.Driver
     username: root
     password: 123456

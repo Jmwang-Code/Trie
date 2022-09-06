@@ -18,6 +18,7 @@
         <module>Configuration-kafka-starter</module>
         <module>Configuration-mybatis-plus-starter</module>
         <module>Configuration-redis-starter</module>
+        <module>Configuration-swagger2-starter</module>
     </modules>
 
     <artifactId>ConfigurationConsistency</artifactId>
@@ -29,6 +30,10 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
 <!--        <dependency>-->
 <!--            <groupId>org.springframework.boot</groupId>-->
 <!--            <artifactId>spring-boot-starter-web</artifactId>-->

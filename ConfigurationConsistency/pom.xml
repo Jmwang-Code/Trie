@@ -16,6 +16,8 @@
         <module>Configuration-elasticsearch-starter</module>
         <module>Configuration-jetcache-starter</module>
         <module>Configuration-kafka-starter</module>
+        <module>Configuration-mybatis-plus-starter</module>
+        <module>Configuration-redis-starter</module>
     </modules>
 
     <artifactId>ConfigurationConsistency</artifactId>

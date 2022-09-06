@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.eoi.fly.config.BaseConfig,\
+  com.eoi.fly.config.MybatisPlusConfig

@@ -12,10 +12,6 @@ import org.springframework.util.concurrent.ListenableFutureCallback;
 
 import javax.annotation.Resource;
 
-/**
- * @author zhuwukai
- * @date 2021.12.07
- */
 @Component
 @Slf4j
 public class KafkaService {

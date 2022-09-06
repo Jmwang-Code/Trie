@@ -1,4 +1,4 @@
-package com.cn.jmw.cache.config;//package com.sangu.cloud.cache.config;
+//package com.cn.jmw.cache.config;//package com.sangu.cloud.cache.config;
 //
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.context.annotation.Bean;

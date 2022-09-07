@@ -30,7 +30,7 @@ public class StartLogPrinting {
         for (int i = 0; i < 10; i++) {
             FutureTask<Integer> integerFutureTask = new FutureTask<>(new Callable<Integer>() {
                 @Override
-                public Integer call() throws Exception {
+                public Integer call() {
                     synchronized (Object.class) {
                         SingletonEnum.SINGLETON.getInstance()
                                 .add(String.valueOf((long) (Math.random() * Long.MAX_VALUE)))
@@ -69,22 +69,18 @@ public class StartLogPrinting {
         }
     }
 
-    private AtomicInteger atomicInteger = new AtomicInteger();
-
     private volatile List list = new ArrayList();
 
     //加锁保护
-    private ReentrantLock lock = new ReentrantLock();
-    private Lock lock2 = new Lock();
-
-    private CountDownLatch countDownLatch = new CountDownLatch(atomicInteger.get());
+//    private ReentrantLock lock = new ReentrantLock();
+    private NewLock lock = new NewLock();
 
     /**
      * @Author 写注释的暖男jmw
      * @Description stream调用，丝滑如水
      * @Date 18:12 2022/9/7
      */
-    public StartLogPrinting add(String prefix) throws InterruptedException {
+    public StartLogPrinting add(String prefix)  {
         list.add(prefix);
         return this;
     }
@@ -153,28 +149,29 @@ public class StartLogPrinting {
 
 }
 
-class Lock {
-    boolean isLocked = false;
-    Thread lockedBy = null;
-    int lockedCount = 0;
 
-    public synchronized void lock() throws InterruptedException {
-        Thread callingThread = Thread.currentThread();
-        while (isLocked && lockedBy != callingThread) {
+/***
+ * @ClassName: NewLock
+ * @Description:
+ * @Auther: ycjiang
+ * @Date: 2022/9/7 21:57
+ * @version : V1.0
+ */
+@Slf4j
+class NewLock {
+    public boolean isLocked = false;
+    public synchronized void lock()
+            throws InterruptedException{
+        while(isLocked){
             wait();
         }
+        log.info(" this object is isLocked.....");
         isLocked = true;
-        lockedCount++;
-        lockedBy = callingThread;
     }
 
-    public synchronized void unlock() {
-        if (Thread.currentThread() == this.lockedBy) {
-            lockedCount--;
-            if (lockedCount == 0) {
-                isLocked = false;
-                notify();
-            }
-        }
+    public synchronized void unlock(){
+        log.info(" this object is isUnLocked.....");
+        isLocked = false;
+        notify();
     }
 }

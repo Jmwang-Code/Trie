@@ -1,6 +1,7 @@
 package com.cn.jmw;
 
 import com.cn.jmw.uitls.SpringUtils;
+import com.cn.jmw.utils.StartLogPrinting;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -11,6 +12,8 @@ import org.springframework.core.env.Environment;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author jmw
@@ -30,11 +33,10 @@ public class Swagger2Config {
     public SpringUtils getSwagger2Config(ApplicationContext applicationContext, ConfigurableApplicationContext application) throws UnknownHostException {
         Environment env = applicationContext.getEnvironment();
         String envStr = "http://"+InetAddress.getLocalHost().getHostAddress()+":"+ env.getProperty("server.port")+"/doc.html";
-        int envStrLength = envStr.length()+6;
-        log.info("┌{}┐",getLogo(0,envStrLength));
-        log.info("│{}initialization  Swagger2{}│",getLogo(2,envStrLength),getLogo(-1,envStrLength));
-        log.info("│{}{}{}|",getLogo(1,envStrLength),envStr,getLogo(1,envStrLength));
-        log.info("└{}┘",getLogo(0,envStrLength));
+        List list = new ArrayList<>();
+        list.add("initialization  Swagger2");
+        list.add(envStr);
+        StartLogPrinting.startLog(list);
         SpringUtils.setApplicationContext(applicationContext);
         return new SpringUtils();
     }

@@ -2,14 +2,11 @@ package com.cn.jmw.utils;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
 
 import java.util.ArrayList;
-import java.util.ConcurrentModificationException;
 import java.util.List;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
@@ -48,7 +45,7 @@ public class StartLogPrinting {
         }
         for (int i = 0; i < integers.size(); i++) {
             FutureTask<Integer> integerFutureTask = integers.get(i);
-            Integer integer = integerFutureTask.get(10, TimeUnit.SECONDS);
+            integerFutureTask.get(10, TimeUnit.SECONDS);
         }
         System.out.println(executorService.isShutdown());
         executorService.shutdown();
@@ -72,12 +69,13 @@ public class StartLogPrinting {
         }
     }
 
-    private static AtomicInteger atomicInteger = new AtomicInteger();
+    private AtomicInteger atomicInteger = new AtomicInteger();
 
     private volatile List list = new ArrayList();
 
     //加锁保护
-    private Lock lock = new ReentrantLock();
+    private ReentrantLock lock = new ReentrantLock();
+    private Lock lock2 = new Lock();
 
     private CountDownLatch countDownLatch = new CountDownLatch(atomicInteger.get());
 
@@ -86,13 +84,8 @@ public class StartLogPrinting {
      * @Description stream调用，丝滑如水
      * @Date 18:12 2022/9/7
      */
-    public StartLogPrinting add(String prefix) {
-        try {
-            lock.lock();
-            list.add(prefix);
-        }finally {
-            lock.unlock();
-        }
+    public StartLogPrinting add(String prefix) throws InterruptedException {
+        list.add(prefix);
         return this;
     }
 
@@ -102,13 +95,8 @@ public class StartLogPrinting {
      * @Date 18:13 2022/9/7
      */
     public void build() {
-        try {
-            lock.lock();
-            startLog(list);
-            list.removeAll(list);
-        } finally {
-            lock.unlock();
-        }
+        startLog(list);
+        list.removeAll(list);
     }
 
     /**
@@ -163,4 +151,30 @@ public class StartLogPrinting {
         return stringBuilder.toString();
     }
 
+}
+
+class Lock {
+    boolean isLocked = false;
+    Thread lockedBy = null;
+    int lockedCount = 0;
+
+    public synchronized void lock() throws InterruptedException {
+        Thread callingThread = Thread.currentThread();
+        while (isLocked && lockedBy != callingThread) {
+            wait();
+        }
+        isLocked = true;
+        lockedCount++;
+        lockedBy = callingThread;
+    }
+
+    public synchronized void unlock() {
+        if (Thread.currentThread() == this.lockedBy) {
+            lockedCount--;
+            if (lockedCount == 0) {
+                isLocked = false;
+                notify();
+            }
+        }
+    }
 }

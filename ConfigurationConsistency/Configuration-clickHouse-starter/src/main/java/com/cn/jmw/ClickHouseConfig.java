@@ -25,9 +25,9 @@ public class ClickHouseConfig {
      */
     @Bean
     public SpringUtils getSpringUtils(ApplicationContext applicationContext) {
-        List list = new ArrayList<>();
-        list.add("initialization ClickHouse");
-        StartLogPrinting.startLog(list);
+        StartLogPrinting.SingletonEnum.SINGLETON.getInstance()
+                .add("initialization ClickHouse")
+                .build();
         SpringUtils.setApplicationContext(applicationContext);
         return new SpringUtils();
     }

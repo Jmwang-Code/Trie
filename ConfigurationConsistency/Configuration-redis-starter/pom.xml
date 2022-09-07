@@ -19,9 +19,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.eoi.fly</groupId>
-            <artifactId>common-core-starter</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <groupId>com.cn.jmw</groupId>
+            <artifactId>Configuration-core-starter</artifactId>
+            <version>1.0</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

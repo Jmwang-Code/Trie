@@ -1,7 +1,7 @@
 package com.cn.jmw.config;
 
+import com.cn.jmw.uitls.SpringUtils;
 import com.cn.jmw.utils.StartLogPrinting;
-import com.eoi.fly.utils.SpringUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -27,9 +27,9 @@ public abstract class BaseConfig {
      */
     @Bean
     public SpringUtils getSpringUtils(ApplicationContext applicationContext) {
-        List list = new ArrayList<>();
-        list.add("initialization MyBatis-Plus");
-        StartLogPrinting.startLog(list);
+        StartLogPrinting.SingletonEnum.SINGLETON.getInstance()
+                .add("initialization MyBatis-Plus")
+                .build();
         SpringUtils.setApplicationContext(applicationContext);
         return new SpringUtils();
     }

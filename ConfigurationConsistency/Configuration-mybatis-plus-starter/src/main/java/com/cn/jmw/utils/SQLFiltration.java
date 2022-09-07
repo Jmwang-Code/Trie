@@ -1,7 +1,7 @@
 package com.cn.jmw.utils;
 
-import com.eoi.fly.exception.BizException;
-import com.eoi.fly.utils.StringUtils;
+import com.cn.jmw.exception.BizException;
+import com.cn.jmw.utils.StringUtils;
 
 /**
  * SQL过滤

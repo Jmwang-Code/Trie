@@ -25,9 +25,9 @@
         <module>ConfigurationConsistency</module>
         <module>Stack</module>
         <!-- 挂在到ConfigurationConsistency模块下了 所以不需要加 -->
-<!--        <module>ConfigurationConsistency/NacosService</module>-->
-<!--        <module>ConfigurationConsistency/Configuration-core-starter</module>-->
-<!--        <module>ConfigurationConsistency/Configuration-clinkHouse-starter</module>-->
+        <!--        <module>ConfigurationConsistency/NacosService</module>-->
+        <!--        <module>ConfigurationConsistency/Configuration-core-starter</module>-->
+        <!--        <module>ConfigurationConsistency/Configuration-clinkHouse-starter</module>-->
     </modules>
 
     <properties>
@@ -51,7 +51,7 @@
         <druid.version>1.1.10</druid.version>
         <flyway.version>5.2.4</flyway.version>
         <jackson.version>2.10.5</jackson.version>
-<!--        <snakeyaml.version>1.23</snakeyaml.version>-->
+        <!--        <snakeyaml.version>1.23</snakeyaml.version>-->
         <snappy.version>1.1.7.2</snappy.version>
         <beanutils.version>1.9.4</beanutils.version>
         <hutool.version>5.3.10</hutool.version>
@@ -124,11 +124,11 @@
             </dependency>
 
             <!-- 3rd -->
-<!--            <dependency>-->
-<!--                <groupId>org.yaml</groupId>-->
-<!--                <artifactId>snakeyaml</artifactId>-->
-<!--                <version>${snakeyaml.version}</version>-->
-<!--            </dependency>-->
+            <!--            <dependency>-->
+            <!--                <groupId>org.yaml</groupId>-->
+            <!--                <artifactId>snakeyaml</artifactId>-->
+            <!--                <version>${snakeyaml.version}</version>-->
+            <!--            </dependency>-->
 
             <dependency>
                 <groupId>org.xerial.snappy</groupId>
@@ -276,6 +276,29 @@
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
                 <version>21.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
+                <version>3.4.1</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-extension</artifactId>
+                <version>3.4.3.1</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-spring-boot-starter</artifactId>
+                <version>2.0.9</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-openfeign</artifactId>
+                <version>3.1.3</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

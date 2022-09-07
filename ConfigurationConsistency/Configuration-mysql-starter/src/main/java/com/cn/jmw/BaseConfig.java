@@ -6,6 +6,10 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * @author zhuwukai
+ * @date 2021.11.18
+ */
 @Configuration
 @Slf4j
 public abstract class BaseConfig {
@@ -18,9 +22,7 @@ public abstract class BaseConfig {
      */
     @Bean
     public SpringUtils getSpringUtils(ApplicationContext applicationContext) {
-        log.info("┌───────────────────────────────┐");
-        log.info("│   initialization   Database   │");
-        log.info("└───────────────────────────────┘");
+        log.info("=============初始化==Database===============");
         SpringUtils.setApplicationContext(applicationContext);
         return new SpringUtils();
     }

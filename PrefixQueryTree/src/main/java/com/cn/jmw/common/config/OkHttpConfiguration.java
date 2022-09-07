@@ -1,13 +1,14 @@
 package com.cn.jmw.common.config;
 
 import com.cn.jmw.common.utils.OkHttpUtils;
-import com.sun.istack.internal.NotNull;
 
 import java.util.concurrent.TimeUnit;
 
+import javax.validation.constraints.NotNull;
 import javax.annotation.Resource;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
 
@@ -23,6 +24,7 @@ import okhttp3.OkHttpClient;
  * @date 2022年09月02日 18:02
  * @Version 1.0
  */
+@Configuration
 public class OkHttpConfiguration {
     @Resource
     private OkHttpConfig okHttpConfig;

@@ -1,7 +1,7 @@
-package com.cn.jmw;
+package com.cn.jmw.config;
 
-import com.cn.jmw.uitls.SpringUtils;
 import com.cn.jmw.utils.StartLogPrinting;
+import com.eoi.fly.utils.SpringUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -11,22 +11,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author jmw
- * @Description TODO
- * @date 2022年08月30日 12:49
- * @Version 1.0
- */
+ * @Author jmw
+ * @Description //TODO
+ * @Date 13:50 2022/9/6
+ **/
 @Configuration
 @Slf4j
-public class ClickHouseConfig {
-//😂
+public abstract class BaseConfig {
+
     /**
      * Spring 工具类
+     *
+     * @param applicationContext
+     * @return
      */
     @Bean
     public SpringUtils getSpringUtils(ApplicationContext applicationContext) {
         List list = new ArrayList<>();
-        list.add("initialization ClickHouse");
+        list.add("initialization MyBatis-Plus");
         StartLogPrinting.startLog(list);
         SpringUtils.setApplicationContext(applicationContext);
         return new SpringUtils();

@@ -30,13 +30,13 @@ public class StartLogPrinting {
         for (int i = 0; i < 10; i++) {
             FutureTask<Integer> integerFutureTask = new FutureTask<>(new Callable<Integer>() {
                 @Override
-                public Integer call() {
-                    synchronized (Object.class) {
+                public Integer call() throws InterruptedException {
+//                    synchronized (Object.class) {
                         SingletonEnum.SINGLETON.getInstance()
-                                .add(String.valueOf((long) (Math.random() * Long.MAX_VALUE)))
+                                .addFirst(String.valueOf((long) (Math.random() * Long.MAX_VALUE)))
                                 .add(String.valueOf((long) (Math.random() * Long.MAX_VALUE)))
                                 .build();
-                    }
+//                    }
                     return 1;
                 }
             });
@@ -47,7 +47,6 @@ public class StartLogPrinting {
             FutureTask<Integer> integerFutureTask = integers.get(i);
             integerFutureTask.get(10, TimeUnit.SECONDS);
         }
-        System.out.println(executorService.isShutdown());
         executorService.shutdown();
     }
 
@@ -75,12 +74,21 @@ public class StartLogPrinting {
 //    private ReentrantLock lock = new ReentrantLock();
     private NewLock lock = new NewLock();
 
+    private AtomicInteger atomicInteger = new AtomicInteger();
+
     /**
      * @Author 写注释的暖男jmw
      * @Description stream调用，丝滑如水
      * @Date 18:12 2022/9/7
      */
-    public StartLogPrinting add(String prefix)  {
+    public StartLogPrinting addFirst(String prefix) throws InterruptedException {
+//        log.info(" addFirst  is starting");
+        lock.lock();
+        list.add(prefix);
+        return this;
+    }
+
+    public StartLogPrinting add(String prefix) throws InterruptedException {
         list.add(prefix);
         return this;
     }
@@ -93,6 +101,7 @@ public class StartLogPrinting {
     public void build() {
         startLog(list);
         list.removeAll(list);
+        lock.unlock();
     }
 
     /**
@@ -159,18 +168,18 @@ public class StartLogPrinting {
  */
 @Slf4j
 class NewLock {
-    public boolean isLocked = false;
+    public volatile boolean isLocked = false;
     public synchronized void lock()
             throws InterruptedException{
         while(isLocked){
             wait();
         }
-        log.info(" this object is isLocked.....");
+//        log.info(" this object is isLocked.....");
         isLocked = true;
     }
 
     public synchronized void unlock(){
-        log.info(" this object is isUnLocked.....");
+//        log.info(" this object is isUnLocked.....");
         isLocked = false;
         notify();
     }

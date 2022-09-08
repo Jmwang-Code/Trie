@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
@@ -16,7 +15,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * @Version 1.0
  */
 @Slf4j
-public class StartLogPrinting {
+public class StartLogPrinting<E> {
 
     /**
      * @Author 写注释的暖男jmw
@@ -31,12 +30,11 @@ public class StartLogPrinting {
             FutureTask<Integer> integerFutureTask = new FutureTask<>(new Callable<Integer>() {
                 @Override
                 public Integer call() throws InterruptedException {
-//                    synchronized (Object.class) {
-                        SingletonEnum.SINGLETON.getInstance()
-                                .addFirst(String.valueOf((long) (Math.random() * Long.MAX_VALUE)))
-                                .add(String.valueOf((long) (Math.random() * Long.MAX_VALUE)))
-                                .build();
-//                    }
+                    SingletonEnum.SINGLETON.getInstance()
+                            .add(String.valueOf((long) (Math.random() * Long.MAX_VALUE)))
+                            .add(String.valueOf((long) (Math.random() * Long.MAX_VALUE)))
+                            .add(String.valueOf((long) (Math.random() * Long.MAX_VALUE)))
+                            .build();
                     return 1;
                 }
             });
@@ -64,32 +62,29 @@ public class StartLogPrinting {
         }
 
         public StartLogPrinting getInstance() {
+            lock.lock();
             return instance;
         }
     }
 
     private volatile List list = new ArrayList();
 
-    //加锁保护
-//    private ReentrantLock lock = new ReentrantLock();
-    private NewLock lock = new NewLock();
-
-    private AtomicInteger atomicInteger = new AtomicInteger();
+    private static ReentrantLock lock = new ReentrantLock();
+//    private NewLock lock = new NewLock();
 
     /**
-     * @Author 写注释的暖男jmw
-     * @Description stream调用，丝滑如水
+     * @Author ycjiang
+     * @Description
      * @Date 18:12 2022/9/7
      */
-    public StartLogPrinting addFirst(String prefix) throws InterruptedException {
-//        log.info(" addFirst  is starting");
-        lock.lock();
-        list.add(prefix);
+    @Deprecated
+    public StartLogPrinting addFirst(E e) throws InterruptedException {
+        list.add(e);
         return this;
     }
 
-    public StartLogPrinting add(String prefix) throws InterruptedException {
-        list.add(prefix);
+    public StartLogPrinting add(E e) throws InterruptedException {
+        list.add(e);
         return this;
     }
 
@@ -99,9 +94,12 @@ public class StartLogPrinting {
      * @Date 18:13 2022/9/7
      */
     public void build() {
-        startLog(list);
-        list.removeAll(list);
-        lock.unlock();
+        try {
+            startLog(list);
+            list.removeAll(list);
+        } finally {
+            lock.unlock();
+        }
     }
 
     /**
@@ -109,7 +107,7 @@ public class StartLogPrinting {
      * @Description 打印模板方法
      * @Date 13:29 2022/9/7
      */
-    public void startLog(List<String> list) {
+    public void startLog(List<E> list) {
         StringBuilder stringBuilder = new StringBuilder();
         //判断最大行
         int maxRow = maxRow(list);
@@ -122,9 +120,9 @@ public class StartLogPrinting {
      * @Description 寻找最大行
      * @Date 13:29 2022/9/7
      */
-    private int maxRow(List<String> list) {
+    private int maxRow(List<E> list) {
         final int[] ans = {Integer.MIN_VALUE};
-        list.forEach(str -> ans[0] = Math.max(ans[0], str.length()));
+        list.forEach(str -> ans[0] = Math.max(ans[0], str.toString().length()));
         return ans[0];
     }
 
@@ -133,15 +131,19 @@ public class StartLogPrinting {
      * @Description 拼接打印函数
      * @Date 13:30 2022/9/7
      */
-    private void getLog(StringBuilder sb, List<String> list, int maxRow) {
+    private void getLog(StringBuilder sb, List<E> list, int maxRow) {
         log.info(String.valueOf(sb.append("┌").append(getLogo(0, maxRow, 0)).append("┐")));
         sb.delete(0, sb.length());
         list.stream().forEach(str -> {
-            log.info(String.valueOf(sb.append("│" + getLogo(1, maxRow, str.length()) + str + getLogo(-1, maxRow, str.length()) + "│")));
+            int length = str.toString().length();
+            log.info(String.valueOf(sb.append("│" + getLogo(1, maxRow, length) + str + getLogo(-1, maxRow, length) + "│")));
             sb.delete(0, sb.length());
         });
         log.info(String.valueOf(sb.append("└").append(getLogo(0, maxRow, 0)).append("┘")));
     }
+
+    final static String LOGO1 = "─";
+    final static String LOGO2 = " ";
 
     /**
      * @Author 写注释的暖男jmw
@@ -150,9 +152,9 @@ public class StartLogPrinting {
      */
     private String getLogo(int logo, int size, int length) {
         StringBuilder stringBuilder = new StringBuilder();
-        if (logo == 0) for (int i = 0; i < size; i++) stringBuilder.append("─");
-        else if (logo == 1) for (int i = 0; i < (size - length) / 2; i++) stringBuilder.append(" ");
-        else for (int i = 0; i < size - length - (size - length) / 2; i++) stringBuilder.append(" ");
+        if (logo == 0) for (int i = 0; i < size; i++) stringBuilder.append(LOGO1);
+        else if (logo == 1) for (int i = 0; i < (size - length) / 2; i++) stringBuilder.append(LOGO2);
+        else for (int i = 0; i < size - length - (size - length) / 2; i++) stringBuilder.append(LOGO2);
         return stringBuilder.toString();
     }
 
@@ -166,20 +168,18 @@ public class StartLogPrinting {
  * @Date: 2022/9/7 21:57
  * @version : V1.0
  */
-@Slf4j
 class NewLock {
     public volatile boolean isLocked = false;
+
     public synchronized void lock()
-            throws InterruptedException{
-        while(isLocked){
+            throws InterruptedException {
+        while (isLocked) {
             wait();
         }
-//        log.info(" this object is isLocked.....");
         isLocked = true;
     }
 
-    public synchronized void unlock(){
-//        log.info(" this object is isUnLocked.....");
+    public synchronized void unlock() {
         isLocked = false;
         notify();
     }

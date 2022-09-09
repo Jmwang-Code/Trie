@@ -3,7 +3,9 @@ package com.cn.jmw.utils;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.*;
 import java.util.concurrent.locks.ReentrantLock;
@@ -29,7 +31,7 @@ public class StartLogPrinting<E> {
         for (int i = 0; i < 10; i++) {
             FutureTask<Integer> integerFutureTask = new FutureTask<>(new Callable<Integer>() {
                 @Override
-                public Integer call() throws InterruptedException {
+                public Integer call() {
                     SingletonEnum.SINGLETON.getInstance()
                             .add(String.valueOf((long) (Math.random() * Long.MAX_VALUE)))
                             .add(String.valueOf((long) (Math.random() * Long.MAX_VALUE)))
@@ -70,12 +72,11 @@ public class StartLogPrinting<E> {
     private volatile List list = new ArrayList();
 
     private static ReentrantLock lock = new ReentrantLock();
-//    private NewLock lock = new NewLock();
 
-    /**
-     * @Author ycjiang
-     * @Description
-     * @Date 18:12 2022/9/7
+    /***
+     * @Description:
+     * @Auther: ycjiang
+     * @Date: 2022/9/7 21:57
      */
     @Deprecated
     public StartLogPrinting addFirst(E e) throws InterruptedException {
@@ -83,8 +84,17 @@ public class StartLogPrinting<E> {
         return this;
     }
 
-    public StartLogPrinting add(E e) throws InterruptedException {
+    public StartLogPrinting add(E e) {
         list.add(e);
+        try {
+            if (list.size() == 1 && !objToString(e)) {
+                log.info(e.getClass().getSimpleName() + " : The toString method is not overridden!");
+            }
+        } catch (InvocationTargetException ex) {
+            throw new RuntimeException(ex);
+        } catch (IllegalAccessException ex) {
+            throw new RuntimeException(ex);
+        }
         return this;
     }
 
@@ -126,6 +136,11 @@ public class StartLogPrinting<E> {
         return ans[0];
     }
 
+    public static boolean objToString(Object object) throws InvocationTargetException, IllegalArgumentException, IllegalAccessException {
+        long toString = Arrays.stream(object.getClass().getMethods()).filter(method -> method.getName().equals("toString")).count();
+        return toString == 0 ? false : true;
+    }
+
     /**
      * @Author 写注释的暖男jmw
      * @Description 拼接打印函数
@@ -158,29 +173,4 @@ public class StartLogPrinting<E> {
         return stringBuilder.toString();
     }
 
-}
-
-
-/***
- * @ClassName: NewLock
- * @Description:
- * @Auther: ycjiang
- * @Date: 2022/9/7 21:57
- * @version : V1.0
- */
-class NewLock {
-    public volatile boolean isLocked = false;
-
-    public synchronized void lock()
-            throws InterruptedException {
-        while (isLocked) {
-            wait();
-        }
-        isLocked = true;
-    }
-
-    public synchronized void unlock() {
-        isLocked = false;
-        notify();
-    }
 }

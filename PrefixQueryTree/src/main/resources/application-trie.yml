@@ -1,0 +1,77 @@
+trie:
+  # 启用 Trie 压缩
+  enableTrieCompress: true
+  # 启用倒置的 Trie
+  enableTrieInverted: true
+  # 禁用 Trie 加载
+  disableTrieLoad: true
+  # 启用尝试所有搜索
+  enableTrieAllSearch: true
+  # 启动mysql连接
+  mysql-config:
+    usePasswordService: true
+    driver-class-name: oracle.jdbc.OracleDriver
+    url: jdbc:mysql://localhost:3306/dwsurvey?useUnicode=true&characterEncoding=utf8&useSSL=false
+    user: root
+    password: 123456
+  # 启动oracle连接
+  oracle-config:
+    usePasswordService: true
+    driver-class-name: com.mysql.jdbc.Driver # Mysql6及其以上 com.mysql.cj.jdbc.Driver
+    #1. 使用服务名配置方式：jdbc:oracle:thin:@//<host>:1521/orclpdb
+    #2. 使用SID，配置方式：jdbc:oracle:thin:@//<host>:1521/orcl12c
+    #3. 使用SID，配置方式：jdbc:oracle:thin:@<host>:1521:orcl12c
+    url: jdbc:oracle:thin:@localhost:1521/jmw
+    user: root
+    password: 123456
+  # 启动sqlite连接
+  sqlite-config:
+    driver-class-name: org.sqlite.JDBC
+    urls:
+      'FILE_OP': 'D:\coding\哈几米玛死它\1\cache'
+      'FILE_CACHE': 'D:\coding\哈几米玛死它\1\op'
+  # 数据库读取配置（从多个业务编码表获取，比如公司名称） 获取值为 1.name 2.code
+  codes:
+    code:
+      - id: FULL-GS
+        name: 企业全称
+        type: 1
+        prefix: FULL-GS-
+        enable: true
+        tables:
+          - id: FULL-GS
+            name: 企业全称
+            enable: true
+            remote-handler: jserver
+            select-sql: <![CDATA[SELECT F17_1090 code, OB_OBJECT_NAME_1090 NAME FROM TB_OBJECT_1090 WHERE 1=1]]>
+      - id: TEXT-NONUNIQUEABBR-GS
+        name: 重复的新版文本简称名
+        type: 5
+        prefix: TEXT-NONUNIQUEABBR-GS-
+        enable: false
+        tables:
+          - id: TEXT_NONUNIQUE_ABBRNAME
+            name: 重复的新版文本简称名
+            enable: true
+            remote-handler: direct
+            select-sql: <![CDATA[SELECT F1_1419 code, F3_1419 NAME FROM TB_OBJECT_1419 WHERE 1=1]]>
+      - id: TEXT-UNIQUEABBR-GS
+        name: 不重复的新版文本简称名
+        type: 4
+        prefix: TEXT-UNIQUEABBR-GS-
+        enable: false
+        tables:
+          - id: TEXT_UNIQUE_ABBRNAME
+            name: 不重复的新版文本简称名
+            enable: true
+            remote-handler: direct
+            select-sql: <![CDATA[select T0088.F1_0088 code,T0088.F2_0088 NAME FROM WIND.TB_OBJECT_0088 T0088 WHERE ROWNUM < 10]]>
+  clickhouse-config:
+    driver-class-name: ru.yandex.clickhouse.ClickHouseDriver
+    url: jdbc:clickhouse://localhost:xxxx/ck
+    user: default
+    password:
+#  cache-config:
+#  oplog-config:
+#  redis-config:
+#  elasticsearch-config:

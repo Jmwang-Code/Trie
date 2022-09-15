@@ -51,6 +51,12 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
+<!--        <dependency>-->
+<!--            <groupId>com.cn.jmw</groupId>-->
+<!--            <artifactId>Configuration-redis-starter</artifactId>-->
+<!--            <version>1.0</version>-->
+<!--        </dependency>-->
+
         <!--        <dependency>-->
         <!--            <groupId>de.codecentric</groupId>-->
         <!--            <artifactId>spring-boot-admin-starter-client</artifactId>-->
@@ -154,6 +160,16 @@
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>okhttp</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+        </dependency>
+
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

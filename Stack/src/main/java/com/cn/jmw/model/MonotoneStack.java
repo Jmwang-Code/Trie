@@ -66,7 +66,4 @@ public class MonotoneStack {
         return ans;
     }
 
-    public static void main(String[] args) {
-        System.out.println(Arrays.toString(nextGreaterElements(new int[]{4,3,2,1})));
-    }
 }

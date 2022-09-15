@@ -37,7 +37,7 @@ public class TrieConfig {
 
     private final SqliteConfig sqliteConfig;
 
-    private ClickhouseConfig clickhouseConfig;
+    private final ClickhouseConfig clickhouseConfig;
 
     private ElasticsearchConfig elasticsearchConfig;
 
@@ -49,11 +49,12 @@ public class TrieConfig {
 
     private OplogConfig oplogConfig;
 
-    public TrieConfig(MysqlConfig mysqlConfig, OracleConfig oracleConfig, SqliteConfig sqliteConfig, CodesConfig codesConfig) {
+    public TrieConfig(MysqlConfig mysqlConfig, OracleConfig oracleConfig, SqliteConfig sqliteConfig, CodesConfig codesConfig, ClickhouseConfig clickhouseConfig) {
         this.mysqlConfig = mysqlConfig;
         this.oracleConfig = oracleConfig;
         this.sqliteConfig = sqliteConfig;
         this.codesConfig = codesConfig;
+        this.clickhouseConfig = clickhouseConfig;
     }
 
 }

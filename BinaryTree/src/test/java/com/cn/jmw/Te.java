@@ -1,3 +1,5 @@
+package com.cn.jmw;
+
 import java.util.*;
 
 /**
@@ -22,5 +24,4 @@ public class Te {
         Collections.sort(ans);
         return ans;
     }
-
 }

@@ -1,7 +1,7 @@
 package com.cn.jmw.utils;
 
 import com.cn.jmw.exception.BizException;
-import com.cn.jmw.utils.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * SQL过滤

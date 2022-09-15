@@ -8,6 +8,8 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.ComponentScans;
 import org.springframework.core.env.Environment;
 
 import javax.sql.DataSource;
@@ -22,6 +24,7 @@ import java.sql.Statement;
  * @author 王佳
  */
 @SpringBootApplication
+@ComponentScans(value = {@ComponentScan("com.cn.jmw"),@ComponentScan("com.cn.jmw.utils")})
 @Slf4j
 public class BinaryTreeApplication {
     @Autowired

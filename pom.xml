@@ -24,6 +24,7 @@
         <module>PrefixQueryTree</module>
         <module>ConfigurationConsistency</module>
         <module>Stack</module>
+        <module>UtilsDemo</module>
         <!-- 挂在到ConfigurationConsistency模块下了 所以不需要加 -->
         <!--        <module>ConfigurationConsistency/NacosService</module>-->
         <!--        <module>ConfigurationConsistency/Configuration-core-starter</module>-->

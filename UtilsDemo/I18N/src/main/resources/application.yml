@@ -1,0 +1,13 @@
+server:
+  port: 8081
+spring:
+  messages:
+    encoding: UTF-8
+    basename: i18n/messages
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
+    cache: false

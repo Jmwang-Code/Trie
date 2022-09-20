@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>I18N</module>
+        <module>DynamicDatabase</module>
     </modules>
 
     <properties>

@@ -19,6 +19,8 @@
         <module>Configuration-mybatis-plus-starter</module>
         <module>Configuration-redis-starter</module>
         <module>Configuration-swagger2-starter</module>
+        <module>Configuration-sqlite-starter</module>
+        <module>Configuration-h2-starter</module>
     </modules>
 
     <artifactId>ConfigurationConsistency</artifactId>

@@ -1,0 +1,11 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: DynamicDatabase
+  datasource:
+    url: jdbc:mysql://152.136.154.249:3306/demo?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: demo
+    password: kKJ8XynXLzjfYDA7
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource

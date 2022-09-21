@@ -1,3 +1,4 @@
+
 spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
@@ -19,8 +20,5 @@ spring:
       max-active: 20
       test-on-borrow: true
       driver-class-name: com.mysql.cj.jdbc.Driver
-# \u8FD9\u79CD\u65B9\u5F0F\u4E0D\u80FD\u8BBE\u7F6Emybatis plugin
-#mybatis:
-#  configuration:
-#    interceptors:
-#      - com.tuling.dynamic.datasource.plugin.DynamicDataSourcePlugin
+server:
+  port: 8081

@@ -21,6 +21,7 @@
         <module>Configuration-swagger2-starter</module>
         <module>Configuration-sqlite-starter</module>
         <module>Configuration-h2-starter</module>
+        <module>Configuration-mongoDB-starter</module>
     </modules>
 
     <artifactId>ConfigurationConsistency</artifactId>

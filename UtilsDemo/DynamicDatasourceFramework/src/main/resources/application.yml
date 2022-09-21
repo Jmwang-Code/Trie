@@ -1,0 +1,26 @@
+spring:
+  datasource:
+    dynamic:
+      #设置默认的数据源或者数据源组,默认值即为master
+      primary: master
+      #严格匹配数据源,默认false. true未匹配到指定数据源时抛异常,false使用默认数据源
+      strict: false
+      datasource:
+        master:
+          url: jdbc:mysql://127.0.0.1:3306/datasource1?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF8&useSSL=false
+          username: root
+          password: 123456
+          initial-size: 1
+          min-idle: 1
+          max-active: 20
+          test-on-borrow: true
+          driver-class-name: com.mysql.cj.jdbc.Driver
+        slave_1:
+          url: jdbc:mysql://127.0.0.1:3306/datasource2?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF8&useSSL=false
+          username: root
+          password: 123456
+          initial-size: 1
+          min-idle: 1
+          max-active: 20
+          test-on-borrow: true
+          driver-class-name: com.mysql.cj.jdbc.Driver

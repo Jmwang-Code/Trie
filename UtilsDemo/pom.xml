@@ -13,9 +13,9 @@
     <packaging>pom</packaging>
     <modules>
         <module>I18N</module>
-        <module>DynamicDatabase</module>
-        <module>DynamicMybatis</module>
-        <module>DynamicDatasourceFramework</module>
+        <module>Dynamic-RW-Database</module>
+        <module>Dynamic-RWMybatis-Database</module>
+        <module>Dynamic-Datasource-Framework</module>
     </modules>
 
     <properties>

@@ -25,12 +25,7 @@
         <module>ConfigurationConsistency</module>
         <module>Stack</module>
         <module>UtilsDemo</module>
-        <!-- 挂在到ConfigurationConsistency模块下了 所以不需要加 -->
-        <!--        <module>ConfigurationConsistency/NacosService</module>-->
-        <!--        <module>ConfigurationConsistency/Configuration-core-starter</module>-->
-        <!--        <module>ConfigurationConsistency/Configuration-clinkHouse-starter</module>-->
     </modules>
-
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
@@ -236,13 +231,6 @@
                 <version>0.2.12</version>
             </dependency>
 
-            <!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-jdbc</artifactId>
-                <version>5.3.22</version>
-            </dependency>
-
             <dependency>
                 <groupId>com.zaxxer</groupId>
                 <artifactId>HikariCP</artifactId>
@@ -300,6 +288,18 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-openfeign</artifactId>
                 <version>3.1.3</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-aop</artifactId>
+                <version>2.7.3</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>1.2.12</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

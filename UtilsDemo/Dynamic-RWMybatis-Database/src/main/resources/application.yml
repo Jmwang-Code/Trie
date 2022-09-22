@@ -1,0 +1,26 @@
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    datasource1:
+      url: jdbc:mysql://152.136.154.249:3306/demot?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF8&useSSL=false
+      username: demoT
+      password: Ax84BaJnHpGZFxGA
+      initial-size: 1
+      min-idle: 1
+      max-active: 20
+      test-on-borrow: true
+      driver-class-name: com.mysql.cj.jdbc.Driver
+    datasource2:
+      url: jdbc:mysql://152.136.154.249:3306/demo?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF8&useSSL=false
+      username: demo
+      password: kKJ8XynXLzjfYDA7
+      initial-size: 1
+      min-idle: 1
+      max-active: 20
+      test-on-borrow: true
+      driver-class-name: com.mysql.cj.jdbc.Driver
+# \u8FD9\u79CD\u65B9\u5F0F\u4E0D\u80FD\u8BBE\u7F6Emybatis plugin
+#mybatis:
+#  configuration:
+#    interceptors:
+#      - com.tuling.dynamic.datasource.plugin.DynamicDataSourcePlugin

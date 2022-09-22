@@ -23,4 +23,4 @@ spring:
 #mybatis:
 #  configuration:
 #    interceptors:
-#      - com.tuling.dynamic.datasource.plugin.DynamicDataSourcePlugin
+#      - com.cn.jmw.datasource.plugin.DynamicDataSourcePlugin

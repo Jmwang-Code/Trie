@@ -7,11 +7,6 @@ import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
-/**
- * @Auther: wangyi
- * @Date: 2020/12/12 01:16
- * @Description: 
- */
 public interface WFrendMapper {
     @Select("SELECT * FROM Frend")
     List<Frend> list();

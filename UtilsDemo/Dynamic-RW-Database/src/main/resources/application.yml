@@ -2,7 +2,7 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     datasource1:
-      url: jdbc:mysql://152.136.154.249:3306/demot?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF8&useSSL=false
+      url: jdbc:mysql://localhost:3306/demot?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF8&useSSL=false
       username: demoT
       password: Ax84BaJnHpGZFxGA
       initial-size: 1
@@ -11,7 +11,7 @@ spring:
       test-on-borrow: true
       driver-class-name: com.mysql.cj.jdbc.Driver
     datasource2:
-      url: jdbc:mysql://152.136.154.249:3306/demo?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF8&useSSL=false
+      url: jdbc:mysql://localhost:3306/demo?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF8&useSSL=false
       username: demo
       password: kKJ8XynXLzjfYDA7
       initial-size: 1

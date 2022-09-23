@@ -24,7 +24,7 @@
         <module>PrefixQueryTree</module>
         <module>ConfigurationConsistency</module>
         <module>Stack</module>
-        <module>UtilsDemo</module>
+        <module>Demo</module>
     </modules>
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -300,6 +300,25 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid-spring-boot-starter</artifactId>
                 <version>1.2.12</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>1.18.24</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-mail</artifactId>
+                <version>2.7.3</version>
+            </dependency>
+
+            <!-- 用于 XML 文档验证的API -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-validation</artifactId>
+                <version>2.7.3</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

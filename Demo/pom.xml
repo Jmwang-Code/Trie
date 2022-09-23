@@ -9,13 +9,14 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>UtilsDemo</artifactId>
+    <artifactId>Demo</artifactId>
     <packaging>pom</packaging>
     <modules>
         <module>I18N</module>
         <module>Dynamic-RW-Database</module>
         <module>Dynamic-RWMybatis-Database</module>
         <module>Dynamic-Datasource-Framework</module>
+        <module>Demo-Core</module>
     </modules>
 
     <properties>

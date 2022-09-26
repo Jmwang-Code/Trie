@@ -1,12 +1,37 @@
 spring:
   datasource:
     dynamic:
+      #druid
+      druid: #以下是全局默认值，可以全局更改
+        #监控统计拦截的filters
+        filters: stat
+        #配置初始化大小/最小/最大
+        initial-size: 1
+        min-idle: 1
+        max-active: 20
+        #获取连接等待超时时间
+        max-wait: 60000
+        #间隔多久进行一次检测，检测需要关闭的空闲连接
+        time-between-eviction-runs-millis: 60000
+        #一个连接在池中最小生存的时间
+        min-evictable-idle-time-millis: 300000
+        validation-query: SELECT 'x'
+        test-while-idle: true
+        test-on-borrow: false
+        test-on-return: false
+        #打开PSCache，并指定每个连接上PSCache的大小。oracle设为true，mysql设为false。分库分表较多推荐设置为false
+        pool-prepared-statements: false
+        max-pool-prepared-statement-per-connection-size: 20
+        stat:
+          merge-sql: true
+          log-slow-sql: true
+          slow-sql-millis: 2000
       #设置默认的数据源或者数据源组,默认值即为master
       primary: master
       #严格匹配数据源,默认false. true未匹配到指定数据源时抛异常,false使用默认数据源
       strict: false
       datasource:
-        master:
+        master_1:
           url: jdbc:mysql://127.0.0.1:3306/datasource1?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF8&useSSL=false
           username: root
           password: 123456
@@ -24,3 +49,70 @@ spring:
 #          max-active: 20
 #          test-on-borrow: true
           driver-class-name: com.mysql.cj.jdbc.Driver
+        slave_2:
+          url:
+          username:
+          password:
+          driver-class-name:
+#          initial-size: 1
+#          min-idle: 1
+#          max-active: 20
+#          test-on-borrow: true
+        mysql:
+          url:
+          username:
+          password:
+          driver-class-name:
+        oracle:
+          url:
+          username:
+          password:
+          driver-class-name:
+        sqlserver:
+          url:
+          username:
+          password:
+          driver-class-name:
+        postgresql:
+          url:
+          username:
+          password:
+          driver-class-name:
+        h2:
+          url:
+          username:
+          password:
+          driver-class-name:
+        sqlite:
+          url:
+          username:
+          password:
+          driver-class-name:
+        # ACCESS只能连接JDK1.7
+        # BIG_QUERY
+        # CALCITE
+        # CLICKHOUSE
+        # DB2
+        # DERBY
+        # DM
+        # DORIS
+        # FIREBIRD
+        # HIVE
+        # HSQLDB
+        # IMPALA
+        # INFOBRIGHT
+        # INFORMIX
+        # INGRES
+        # INTERBASE
+        # JETHRO
+        # LUCIDDB
+        # MSSQL
+        # NEOVIEW
+        # NETEZZA
+        # PHOENIX
+        # PRESTO
+        # SPARK
+        # SQLSTREAM
+        # SYBASE
+        # TERADATA
+        # VERTICA

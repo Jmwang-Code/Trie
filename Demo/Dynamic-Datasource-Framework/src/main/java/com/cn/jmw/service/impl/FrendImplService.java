@@ -29,7 +29,6 @@ public class FrendImplService implements FrendService {
         frendMapper.save(frend);
     }
 
-
     @DS("master")
     @DSTransactional
     public void saveAll(){

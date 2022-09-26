@@ -16,7 +16,6 @@
         <module>Dynamic-RW-Database</module>
         <module>Dynamic-RWMybatis-Database</module>
         <module>Dynamic-Datasource-Framework</module>
-        <module>Demo-Core</module>
     </modules>
 
     <properties>

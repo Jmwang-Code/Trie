@@ -1,5 +1,6 @@
 package com.cn.jmw.data.source.factory.adapters;
 
+import java.io.IOException;
 import java.sql.Connection;
 
 /**
@@ -8,11 +9,15 @@ import java.sql.Connection;
  * @date 2022年09月28日 14:46
  * @Version 1.0
  */
-public class MysqlDataSourceAdapter implements JdbcDataSourceAdapter{
-
+public class MysqlDataSourceAdapter extends JdbcDataSourceAdapter{
 
     @Override
     public String readCurrDatabase(Connection conn, boolean isCatalog) {
         return null;
+    }
+
+    @Override
+    public void close() throws IOException {
+
     }
 }

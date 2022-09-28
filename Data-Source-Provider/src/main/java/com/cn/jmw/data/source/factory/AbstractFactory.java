@@ -1,6 +1,6 @@
 package com.cn.jmw.data.source.factory;
 
-import com.cn.jmw.data.source.factory.adapters.JdbcDataSourceAdapter;
+import com.cn.jmw.data.source.pojo.JdbcProperties;
 
 import javax.sql.DataSource;
 
@@ -19,5 +19,5 @@ public abstract class AbstractFactory<T extends DataSource> {
      * @return JdbcDataSourceAdapter
      * @Date 15:18 2022/9/28
      */
-    public abstract JdbcDataSourceAdapter getJdbc(String type);
+    public abstract T createDataSource(JdbcProperties jdbcProperties) throws Exception;
 }

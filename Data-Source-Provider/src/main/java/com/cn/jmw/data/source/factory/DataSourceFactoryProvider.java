@@ -1,6 +1,8 @@
 package com.cn.jmw.data.source.factory;
 
-import com.cn.jmw.data.source.factory.adapters.JdbcDataSourceAdapter;
+import com.cn.jmw.data.source.pojo.common.AbstractFactoryEnum;
+
+import javax.sql.DataSource;
 
 /**
  * @author 写注释的暖男jmw
@@ -10,15 +12,33 @@ import com.cn.jmw.data.source.factory.adapters.JdbcDataSourceAdapter;
  */
 public class DataSourceFactoryProvider {
 
-    public static AbstractFactory getFactory(String choice){
-        if("JDBC".equalsIgnoreCase(choice)){
-            return new DataSourceFactory();
+    /**
+     * @Author jmw
+     * @Description 动态创建不同工厂
+     * @param choice:
+     * @return AbstractFactory<DataSource>
+     * @Date 17:08 2022/9/28
+     */
+    public static AbstractFactory<? extends DataSource> getFactory(AbstractFactoryEnum choice) {
+        if (AbstractFactoryEnum.DRUID.equals(choice)) {
+            return new DruidSourceFactory();
+        }else if (AbstractFactoryEnum.HIKARI.equals(choice)){
+            return new HikariSourceFactory<>();
         }
         return null;
     }
 
-    public static void main(String[] args) {
-        JdbcDataSourceAdapter jdbc = DataSourceFactoryProvider.getFactory("JDBC").getJdbc("MYSQL");
 
+    /**
+     * @Author jmw
+     * @Description 直接使用创建对应工厂不推荐
+     * @param :
+     * @return DataSourceFactory<DataSource>
+     * @Date 17:08 2022/9/28
+     */
+    @Deprecated
+    public static DruidSourceFactory<? extends DataSource> getJDBCFactory() {
+        return new DruidSourceFactory();
     }
+
 }

@@ -9,7 +9,7 @@ import org.springframework.core.Ordered;
 import org.springframework.stereotype.Component;
 
 @Component
-@Aspect
+@Aspect //动态切面
 public class DynamicDataSourceAspect implements Ordered {
 
     // 前置

@@ -16,6 +16,7 @@
         <module>Dynamic-RW-Database</module>
         <module>Dynamic-RWMybatis-Database</module>
         <module>Dynamic-Datasource-Framework</module>
+        <module>Spring-Security-demo</module>
     </modules>
 
     <properties>

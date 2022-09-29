@@ -5,12 +5,16 @@ import com.cn.jmw.data.source.exception.Exceptions;
 import com.cn.jmw.data.source.factory.DataSourceFactoryProvider;
 import com.cn.jmw.data.source.pojo.JdbcDriverInfo;
 import com.cn.jmw.data.source.pojo.JdbcProperties;
-import com.cn.jmw.data.source.pojo.common.AbstractFactoryEnum;
+import com.cn.jmw.data.source.pojo.PageInfo;
+import com.cn.jmw.data.source.common.AbstractFactoryEnum;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.sql.DataSource;
 import java.io.Closeable;
+import java.io.IOException;
 import java.sql.Connection;
+import java.sql.SQLException;
+
 @Slf4j
 /**
  * @author 写注释的暖男jmw
@@ -45,5 +49,29 @@ public abstract class JdbcDataSourceAdapter implements Closeable {
      * @return String
      * @Date 15:03 2022/9/28
      */
-    public abstract String readCurrDatabase(Connection conn, boolean isCatalog);
+    public abstract String readCurrDatabase(Connection conn, boolean isCatalog) throws SQLException;
+
+    /**
+     * @Author jmw
+     * @Description 执行多条
+     * @param sql:
+     * @return int
+     * @Date 17:12 2022/9/29
+     */
+    public abstract int executeCountSql(String sql) throws SQLException;
+
+    /**
+     * @Author jmw
+     * @Description 执行一条
+     * @param sql:
+     * @param pageInfo:
+     * @return int
+     * @Date 17:12 2022/9/29
+     */
+    public abstract int executeSql(String sql, PageInfo pageInfo) throws SQLException;
+
+    @Override
+    public void close() throws IOException {
+
+    }
 }

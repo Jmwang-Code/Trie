@@ -15,38 +15,46 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.cn.jmw.data.source.pojo;
 
 import lombok.Data;
 import lombok.ToString;
-import lombok.experimental.Accessors;
 
-import javax.validation.constraints.NotBlank;
-import java.util.Properties;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @Author jmw
- * @Description JDBC连接源信息
+ * @Description 数据源提供类
+ * @Date 17:43 2022/9/29
  */
 @Data
 @ToString
-@Accessors(chain = true)
-public class JdbcProperties {
+public class DataProviderSource {
 
-    @NotBlank
-    private String dbType;
-    @NotBlank
-    private String url;
+    /**
+     * 数据源id
+     */
+    private String sourceId;
 
-    private String user;
+    /**
+     * 类型比 如JDBC FILE HTTP KAFKA
+     */
+    private String type;
 
-    private String password;
-    @NotBlank
-    private String driverClass;
+    /**
+     * 数据源名称
+     */
+    private String name;
 
-    private Properties properties;
+    /**
+     * 链接数据源信息
+     */
+    private Map<String, Object> properties;
 
-    private boolean enableSpecialSql;
+    /**
+     * 自定义连接池信息
+     */
+    private List<ScriptVariable> variables;
 
 }

@@ -1,16 +1,13 @@
 package com.cn.jmw.data.source;
 
-import com.alibaba.druid.pool.DruidDataSourceFactory;
 import com.cn.jmw.data.source.factory.DataSourceFactoryProvider;
 import com.cn.jmw.data.source.pojo.JdbcProperties;
-import com.cn.jmw.data.source.pojo.common.AbstractFactoryEnum;
-import com.cn.jmw.data.source.pojo.common.DruidSourceFactoryEnum;
+import com.cn.jmw.data.source.common.AbstractFactoryEnum;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
-import java.sql.Statement;
 import java.util.Properties;
 
 /**

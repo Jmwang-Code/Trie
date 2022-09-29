@@ -16,37 +16,19 @@
  * limitations under the License.
  */
 
-package com.cn.jmw.data.source.pojo;
+package com.cn.jmw.data.source.exception;
 
-import lombok.Data;
-import lombok.ToString;
-import lombok.experimental.Accessors;
+public class DataProviderException extends BaseException {
 
-import javax.validation.constraints.NotBlank;
-import java.util.Properties;
+    public DataProviderException(String message) {
+        super(message);
+    }
 
-/**
- * @Author jmw
- * @Description JDBC连接源信息
- */
-@Data
-@ToString
-@Accessors(chain = true)
-public class JdbcProperties {
+    public DataProviderException() {
 
-    @NotBlank
-    private String dbType;
-    @NotBlank
-    private String url;
+    }
 
-    private String user;
-
-    private String password;
-    @NotBlank
-    private String driverClass;
-
-    private Properties properties;
-
-    private boolean enableSpecialSql;
-
+    public DataProviderException(Throwable cause) {
+        super(cause);
+    }
 }

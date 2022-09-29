@@ -15,38 +15,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.cn.jmw.data.source.pojo;
 
 import lombok.Data;
-import lombok.ToString;
-import lombok.experimental.Accessors;
 
-import javax.validation.constraints.NotBlank;
-import java.util.Properties;
+import java.io.Serializable;
 
-/**
- * @Author jmw
- * @Description JDBC连接源信息
- */
 @Data
-@ToString
-@Accessors(chain = true)
-public class JdbcProperties {
+public class TypedValue implements Serializable {
 
-    @NotBlank
-    private String dbType;
-    @NotBlank
-    private String url;
-
-    private String user;
-
-    private String password;
-    @NotBlank
-    private String driverClass;
-
-    private Properties properties;
-
-    private boolean enableSpecialSql;
+    protected ValueType valueType;
 
 }

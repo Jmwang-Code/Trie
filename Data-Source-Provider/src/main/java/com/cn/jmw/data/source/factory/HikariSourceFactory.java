@@ -1,9 +1,8 @@
 package com.cn.jmw.data.source.factory;
 
-import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.pool.DruidDataSourceFactory;
 import com.cn.jmw.data.source.pojo.JdbcProperties;
-import com.cn.jmw.data.source.pojo.common.DruidSourceFactoryEnum;
+import com.cn.jmw.data.source.common.DruidSourceFactoryEnum;
 import com.zaxxer.hikari.HikariDataSource;
 import lombok.extern.slf4j.Slf4j;
 

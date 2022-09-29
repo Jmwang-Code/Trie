@@ -15,38 +15,40 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.cn.jmw.data.source.pojo;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
-import lombok.ToString;
-import lombok.experimental.Accessors;
+import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.NotBlank;
-import java.util.Properties;
+import java.io.Serializable;
 
 /**
  * @Author jmw
- * @Description JDBC连接源信息
+ * @Description 页数
+ * @Date 17:08 2022/9/29
  */
 @Data
-@ToString
-@Accessors(chain = true)
-public class JdbcProperties {
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class PageInfo implements Serializable {
 
-    @NotBlank
-    private String dbType;
-    @NotBlank
-    private String url;
+    private long pageSize;
 
-    private String user;
+    private long pageNo;
 
-    private String password;
-    @NotBlank
-    private String driverClass;
+    private long total;
 
-    private Properties properties;
+    private boolean countTotal;
 
-    private boolean enableSpecialSql;
-
+    @Override
+    public String toString() {
+        return "PageInfo{" +
+                "pageSize=" + pageSize +
+                ", pageNo=" + pageNo +
+                ", total=" + total +
+                '}';
+    }
 }

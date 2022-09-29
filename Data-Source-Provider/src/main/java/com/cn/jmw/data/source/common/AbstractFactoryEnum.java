@@ -1,8 +1,8 @@
-package com.cn.jmw.data.source.pojo.common;
+package com.cn.jmw.data.source.common;
 
 /**
  * @author jmw
- * @Description TODO
+ * @Description 抽象工厂枚举类 -> AbstractFactory
  * @date 2022年09月28日 17:02
  * @Version 1.0
  */

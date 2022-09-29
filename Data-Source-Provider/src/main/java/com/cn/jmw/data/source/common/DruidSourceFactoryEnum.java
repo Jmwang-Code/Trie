@@ -1,8 +1,8 @@
-package com.cn.jmw.data.source.pojo.common;
+package com.cn.jmw.data.source.common;
 
 /**
  * @author jmw
- * @Description TODO
+ * @Description Druid连接池枚举类
  * @date 2022年09月28日 17:22
  * @Version 1.0
  */

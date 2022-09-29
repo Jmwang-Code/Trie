@@ -22,6 +22,10 @@ import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
 
+/**
+ * @Author jmw
+ * @Description JDBC通用信息
+ */
 @Data
 public class JdbcDriverInfo {
 

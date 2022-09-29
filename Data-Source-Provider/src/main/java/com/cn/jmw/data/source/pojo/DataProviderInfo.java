@@ -19,34 +19,21 @@
 package com.cn.jmw.data.source.pojo;
 
 import lombok.Data;
-import lombok.ToString;
-import lombok.experimental.Accessors;
 
-import javax.validation.constraints.NotBlank;
-import java.util.Properties;
+import java.io.Serializable;
 
-/**
- * @Author jmw
- * @Description JDBC连接源信息
- */
 @Data
-@ToString
-@Accessors(chain = true)
-public class JdbcProperties {
+public class DataProviderInfo implements Serializable {
 
-    @NotBlank
-    private String dbType;
-    @NotBlank
-    private String url;
+    private String type;
 
-    private String user;
+    private String name;
 
-    private String password;
-    @NotBlank
-    private String driverClass;
-
-    private Properties properties;
-
-    private boolean enableSpecialSql;
-
+    @Override
+    public String toString() {
+        return "DataProviderInfo{" +
+                "type='" + type + '\'' +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

@@ -29,6 +29,12 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>com.cn.jmw</groupId>
+            <artifactId>data-provider-jdbc</artifactId>
+            <version>1.0.RELEASE</version>
+        </dependency>
     </dependencies>
 
     <build>

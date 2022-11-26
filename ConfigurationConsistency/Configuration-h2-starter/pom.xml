@@ -11,5 +11,11 @@
 
     <artifactId>Configuration-h2-starter</artifactId>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.200</version>
+        </dependency>
+    </dependencies>
 </project>

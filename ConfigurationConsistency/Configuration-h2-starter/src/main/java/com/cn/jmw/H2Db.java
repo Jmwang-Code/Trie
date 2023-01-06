@@ -50,8 +50,6 @@ public class H2Db {
         }
     }
 
-
     public static void main(String[] args) {
-
     }
 }
